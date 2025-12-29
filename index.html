@@ -12,6 +12,7 @@
   --bg:#0e0b14;
   --bg2:#1a1326;
   --accent:#b88fcf;
+  --accent2:#9f7cc1;
   --text:#f3f4f6;
 }
 
@@ -29,7 +30,6 @@ body{
   background:
     radial-gradient(600px 300px at 70% 20%, rgba(184,143,207,.18), transparent 60%),
     linear-gradient(180deg,var(--bg),var(--bg2));
-  overflow:hidden;
 }
 
 .container{
@@ -62,27 +62,87 @@ h1{
 }
 
 p{
-  margin:0 0 26px;
+  margin:0 0 30px;
   font-size:16px;
   opacity:.9;
 }
 
-/* مؤشر التحويل */
-.loader{
-  width:54px;
-  height:54px;
+/* ===== زر تفاعلي ===== */
+.cta{
+  position:relative;
+  padding:15px 36px;
+  font-size:16px;
+  font-weight:900;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 12px 30px rgba(184,143,207,.45);
+  overflow:hidden;
+  transition:.3s ease;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px rgba(184,143,207,.65);
+}
+
+.cta:active{
+  transform:scale(.97);
+}
+
+/* Ripple effect */
+.cta::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,rgba(255,255,255,.35),transparent 60%);
+  opacity:0;
+  transition:.4s;
+}
+
+.cta:hover::after{
+  opacity:1;
+}
+
+/* Loading state */
+.cta.loading{
+  pointer-events:none;
+  background:linear-gradient(135deg,#6f5a8f,#8a72aa);
+}
+
+.cta.loading span{
+  opacity:0;
+}
+
+.spinner{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+}
+
+.cta.loading .spinner{
+  opacity:1;
+}
+
+.spinner div{
+  width:22px;
+  height:22px;
   border-radius:50%;
-  border:2px solid rgba(255,255,255,.15);
-  border-top-color:var(--accent);
-  animation:spin 1.4s linear infinite;
-  margin:auto;
+  border:2px solid rgba(255,255,255,.4);
+  border-top-color:#fff;
+  animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
   to{transform:rotate(360deg)}
 }
 
-/* خروج ناعم قبل التحويل */
+/* خروج ناعم */
 .fade-out{
   animation:exit .8s ease forwards;
 }
@@ -99,24 +159,29 @@ p{
   <img src="https://www.rafah.org.sa/rafed/uploads/website_news/1_6952241baa337.png" alt="جمعية رفاه" class="logo">
   <h1>جمعية رفاه</h1>
   <p>مرحبًا بكم… معًا نصنع أثرًا</p>
-  <div class="loader"></div>
+
+  <button class="cta" id="donateBtn">
+    <span>الانتقال لصفحة التبرع</span>
+    <div class="spinner"><div></div></div>
+  </button>
 </div>
 
 <script>
-/*
-  تحويل جمالي غير تقليدي
-  يظهر المحتوى -> حركة -> خروج ناعم -> تحويل
-*/
-
 const TARGET_URL = "https://www.rafah.org.sa/s/donations/";
+const btn = document.getElementById("donateBtn");
+const screen = document.getElementById("screen");
 
-setTimeout(()=>{
-  document.getElementById("screen").classList.add("fade-out");
-},2600);
+btn.addEventListener("click",()=>{
+  btn.classList.add("loading");
 
-setTimeout(()=>{
-  window.location.replace(TARGET_URL);
-},3400);
+  setTimeout(()=>{
+    screen.classList.add("fade-out");
+  },900);
+
+  setTimeout(()=>{
+    window.location.href = TARGET_URL;
+  },1600);
+});
 </script>
 
 </body>
