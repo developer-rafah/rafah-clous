@@ -1,0 +1,14 @@
+{
+  "name": "Rafah | Closu",
+  "short_name": "Closu",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0e0b14",
+  "theme_color": "#0e0b14",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
