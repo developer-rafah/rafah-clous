@@ -1,1 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>جمعية رفاه</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0e0b14;
+  --bg2:#1a1326;
+  --accent:#b88fcf;
+  --text:#f3f4f6;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"Tajawal",sans-serif;
+  color:var(--text);
+  text-align:center;
+  background:
+    radial-gradient(600px 300px at 70% 20%, rgba(184,143,207,.18), transparent 60%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+}
+
+.container{
+  padding:30px 22px;
+}
+
+.logo{
+  max-width:160px;
+  margin-bottom:18px;
+  animation:breath 4s ease-in-out infinite;
+}
+
+@keyframes breath{
+  50%{transform:scale(1.05)}
+}
+
+h1{
+  margin:0 0 10px;
+  font-size:28px;
+  font-weight:900;
+  background:linear-gradient(90deg,#fff,var(--accent));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+p{
+  margin:0;
+  font-size:16px;
+  font-weight:500;
+  opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <img src="https://www.rafah.org.sa/rafed/uploads/website_news/1_6952241baa337.png" alt="جمعية رفاه" class="logo">
+  <h1>جمعية رفاه</h1>
+  <p>مرحبًا بكم… معًا نصنع أثراً</p>
+</div>
+
+</body>
+</html>
