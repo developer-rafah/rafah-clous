@@ -29,14 +29,21 @@ body{
   background:
     radial-gradient(600px 300px at 70% 20%, rgba(184,143,207,.18), transparent 60%),
     linear-gradient(180deg,var(--bg),var(--bg2));
+  overflow:hidden;
 }
 
 .container{
   padding:30px 22px;
+  animation:enter 1.2s ease forwards;
+}
+
+@keyframes enter{
+  from{opacity:0;transform:translateY(10px) scale(.98)}
+  to{opacity:1;transform:none}
 }
 
 .logo{
-  max-width:160px;
+  max-width:150px;
   margin-bottom:18px;
   animation:breath 4s ease-in-out infinite;
 }
@@ -55,21 +62,62 @@ h1{
 }
 
 p{
-  margin:0;
+  margin:0 0 26px;
   font-size:16px;
-  font-weight:500;
   opacity:.9;
+}
+
+/* مؤشر التحويل */
+.loader{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.15);
+  border-top-color:var(--accent);
+  animation:spin 1.4s linear infinite;
+  margin:auto;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* خروج ناعم قبل التحويل */
+.fade-out{
+  animation:exit .8s ease forwards;
+}
+
+@keyframes exit{
+  to{opacity:0;transform:scale(.96)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" id="screen">
   <img src="https://www.rafah.org.sa/rafed/uploads/website_news/1_6952241baa337.png" alt="جمعية رفاه" class="logo">
   <h1>جمعية رفاه</h1>
-  <p>مرحبًا بكم… معًا نصنع أثراً</p>
+  <p>مرحبًا بكم… معًا نصنع أثرًا</p>
+  <div class="loader"></div>
 </div>
+
+<script>
+/*
+  تحويل جمالي غير تقليدي
+  يظهر المحتوى -> حركة -> خروج ناعم -> تحويل
+*/
+
+const TARGET_URL = "https://www.rafah.org.sa/s/donations/";
+
+setTimeout(()=>{
+  document.getElementById("screen").classList.add("fade-out");
+},2600);
+
+setTimeout(()=>{
+  window.location.replace(TARGET_URL);
+},3400);
+</script>
 
 </body>
 </html>
