@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة الموظف</title>
+
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0e0b14">
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">🧑‍💼</div>
+        <b>لوحة الموظف</b>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="location.href='/'">🏠 الرئيسية</button>
+        <button class="btn" onclick="PWA_WRAPPER.openInNewTab(PWA_WRAPPER.urlStaff())">↗ فتح خارجي</button>
+        <button class="btn primary" onclick="document.getElementById('appFrame').src = PWA_WRAPPER.urlStaff()">🔄 تحديث النظام</button>
+      </div>
+    </div>
+
+    <div class="iframeWrap">
+      <iframe id="appFrame" src="" allow="geolocation; clipboard-read; clipboard-write"></iframe>
+    </div>
+  </div>
+
+  <script src="/assets/app.js"></script>
+  <script>
+    document.getElementById("appFrame").src = PWA_WRAPPER.urlStaff();
+  </script>
+</body>
+</html>
