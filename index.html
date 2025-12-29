@@ -1,123 +1,60 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>جمعية رفاه</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Closu | رفاه</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0e0b14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.svg">
 
-<style>
-:root{
-  --bg:#0e0b14;
-  --bg2:#1a1326;
-  --accent:#b88fcf;
-  --text:#f3f4f6;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:"Tajawal",sans-serif;
-  color:var(--text);
-  text-align:center;
-  background:
-    radial-gradient(600px 300px at 70% 20%, rgba(184,143,207,.18), transparent 60%),
-    linear-gradient(180deg,var(--bg),var(--bg2));
-  overflow:hidden;
-}
-
-.container{
-  padding:30px 22px;
-  animation:enter 1.2s ease forwards;
-}
-
-@keyframes enter{
-  from{opacity:0;transform:translateY(10px) scale(.98)}
-  to{opacity:1;transform:none}
-}
-
-.logo{
-  max-width:150px;
-  margin-bottom:18px;
-  animation:breath 4s ease-in-out infinite;
-}
-
-@keyframes breath{
-  50%{transform:scale(1.05)}
-}
-
-h1{
-  margin:0 0 10px;
-  font-size:28px;
-  font-weight:900;
-  background:linear-gradient(90deg,#fff,var(--accent));
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-p{
-  margin:0 0 26px;
-  font-size:16px;
-  opacity:.9;
-}
-
-/* مؤشر التحويل */
-.loader{
-  width:54px;
-  height:54px;
-  border-radius:50%;
-  border:2px solid rgba(255,255,255,.15);
-  border-top-color:var(--accent);
-  animation:spin 1.4s linear infinite;
-  margin:auto;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-/* خروج ناعم قبل التحويل */
-.fade-out{
-  animation:exit .8s ease forwards;
-}
-
-@keyframes exit{
-  to{opacity:0;transform:scale(.96)}
-}
-</style>
+  <link rel="stylesheet" href="/assets/app.css">
 </head>
-
 <body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">🟣</div>
+        <b>Closu | جمعية رفاه</b>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="location.reload()">🔄 تحديث</button>
+      </div>
+    </div>
 
-<div class="container" id="screen">
-  <img src="https://www.rafah.org.sa/rafed/uploads/website_news/1_6952241baa337.png" alt="جمعية رفاه" class="logo">
-  <h1>جمعية رفاه</h1>
-  <p>مرحباً بكم… معاً نصنع أثراً</p>
-  <div class="loader"></div>
-</div>
+    <div class="main">
+      <div class="card">
+        <div class="h">
+          <div>
+            <h1>اختر الواجهة</h1>
+            <p>سيتم فتح النظام داخل التطبيق بدون إظهار رابط Google في العنوان.</p>
+          </div>
+        </div>
 
-<script>
-/*
-  تحويل جمالي غير تقليدي
-  يظهر المحتوى -> حركة -> خروج ناعم -> تحويل
-*/
+        <div class="grid">
+          <div class="tile">
+            <h3>🧑‍💼 لوحة الموظف</h3>
+            <span>إسناد الطلبات ومتابعتها.</span>
+            <a class="btn primary go" href="/staff/">دخول الموظف</a>
+          </div>
 
-const TARGET_URL = "https://www.rafah.org.sa/s/donations/";
+          <div class="tile">
+            <h3>🧑‍🚚 لوحة المندوب</h3>
+            <span>استلام الطلبات وإغلاقها.</span>
+            <a class="btn primary go" href="/agent/">دخول المندوب</a>
+          </div>
+        </div>
 
-setTimeout(()=>{
-  document.getElementById("screen").classList.add("fade-out");
-},2900);
+        <div class="notice">
+          📌 للتثبيت كتطبيق: افتح الموقع من الجوال ثم “Add to Home Screen”.
+        </div>
+      </div>
+    </div>
+  </div>
 
-setTimeout(()=>{
-  window.location.replace(TARGET_URL);
-},3500);
-</script>
-
+  <script src="/assets/app.js"></script>
 </body>
 </html>
